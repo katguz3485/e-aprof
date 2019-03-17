@@ -12,8 +12,8 @@ script:
 deploy:
   provider: heroku
   api_key:
-    secure:
+    secure: m9+dp30hg44+vn0DC0tc9tVZL4sXGijY5FSDTIhlVP+gbCJCMJW/Mq5nIHiFuq688/6MbDS0CWSv+dkRmUIMWPRF1ic3spMMyOc1JgPycTMMb53zIlXC8WDArNKmNVbLyHnzGa7f6Pv3kT3x25LrWiWK2DZxYDRhx2cqyxtc3+Yms2rAkJVylRk4fzZIa8RX2zxceHucSH75uhC5Ir3HJmsgzWJim1KdSNgmceIUmV31Tnd6TM3BL6t38dhkknwrrwzuzz8tXjaBfMPNh7XTHWouhOKxcrZc5qfj3toJUPqbHGy24axRXBCxXm2OtpdJGQS/PwgiBm4Ke7yfuqpQNZ6e/2hBgJ93pbtfGQrKN3g9Dg/guuYATt460yYYNlP1uiEfSIx7AFDTj0P/OOVlE/3Axho1+PvSghSqIUDmLivawSuszOC1HZ48zD78GOoSmc4BzGkTuV5uhHn4/wIwBoa3PZAdK1SIiFTNAu2Go72gNMXdRSUZV/eMS3zOLTwbCAk+mDP1BtILKN1GiZB0lVyfIch6/lFz4HS1V3BLQT75fp0lEiJt5c2FyPVzIOdTF5MKWqi44KI177USp+L/CIz10kYeJxElLPEQ7t0CnDR8Tf8lUdQxkby1wW5SNAhw6Q0nutQUMDZ4Z84pL0uqJ4/cjLyAeyys6C89wyQH8Gk=
   run: rake db:migrate
-  app: e-adiunkt
+  app: e-aprof
   on:
     repo: katguz3485/e-aprof
