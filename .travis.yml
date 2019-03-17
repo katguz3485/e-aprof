@@ -1,0 +1,19 @@
+language: ruby
+rvm:
+- 2.6.1
+before_install:
+- gem install bundler
+before_script:
+- cp config/database.yml.ci config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+script:
+- bundle exec rails db:migrate RAILS_ENV=test
+- bundle exec rspec
+deploy:
+  provider: heroku
+  api_key:
+    secure:
+  run: rake db:migrate
+  app: e-adiunkt
+  on:
+    repo: katguz3485/e-aprof
