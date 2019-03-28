@@ -8,6 +8,4 @@ class PurchaseOrder < ApplicationRecord
   belongs_to :grant
 
   validates :name, presence: true
-
-
 end

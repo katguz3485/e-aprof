@@ -6,6 +6,5 @@ FactoryBot.define do
     purchase_order
     description { 'MyString' }
     title { 'MyString' }
-
   end
 end
