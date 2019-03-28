@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :purchase_order do
+  factory :item_category, class: 'ItemCategories' do
     name { 'MyString' }
-    grant
+    purchase_order
+    item
   end
 end

@@ -36,12 +36,12 @@ gem 'simple_form', '~> 4.1'
 gem 'simplecov'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 # Use Redis adapter to run Action Cable in production
-gem 'devise'
-gem 'faker'
-gem 'redis', '~> 4.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
+gem 'devise'
 gem 'devise-bootstrap-views'
+gem 'faker'
+gem 'redis', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
