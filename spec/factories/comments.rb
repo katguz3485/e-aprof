@@ -2,9 +2,10 @@
 
 FactoryBot.define do
   factory :comment do
-    description { 'MyString' }
-    title { 'MyString' }
     user
     purchase_order
+    description { 'MyString' }
+    title { 'MyString' }
+
   end
 end

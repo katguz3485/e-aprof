@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_155408) do
+ActiveRecord::Schema.define(version: 2019_03_28_211709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,8 +38,6 @@ ActiveRecord::Schema.define(version: 2019_03_28_155408) do
     t.bigint "purchase_order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "item_id"
-    t.index ["item_id"], name: "index_item_categories_on_item_id"
     t.index ["purchase_order_id"], name: "index_item_categories_on_purchase_order_id"
   end
 
@@ -56,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_03_28_155408) do
     t.string "remarks", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "item_category_id"
+    t.index ["item_category_id"], name: "index_items_on_item_category_id"
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 2019_03_28_155408) do
 
   add_foreign_key "comments", "purchase_orders"
   add_foreign_key "comments", "users"
-  add_foreign_key "item_categories", "items"
   add_foreign_key "item_categories", "purchase_orders"
+  add_foreign_key "items", "item_categories"
   add_foreign_key "items", "users"
   add_foreign_key "purchase_orders", "grants"
   add_foreign_key "user_orders", "purchase_orders"

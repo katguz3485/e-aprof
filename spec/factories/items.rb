@@ -7,10 +7,11 @@ FactoryBot.define do
     link { 'MyString' }
     item_price { '9.99' }
     catalogue_number { 'MyString' }
-    privder_name { 'MyString' }
+    provider_name { 'MyString' }
     number_of_items { 'MyString' }
     packaging { 'MyString' }
     remarks { 'MyString' }
     user
+    item_category
   end
 end
