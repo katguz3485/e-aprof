@@ -25,12 +25,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'bootstrap', '~> 4.3.1'
-gem 'devise-bootstrap-views'
+gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'html2haml'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'omniauth-google'
+gem 'omniauth-google-oauth2',       '~> 0.5.1' # for Google Authentication
 gem 'pundit', '~> 2.0', '>= 2.0.1'
 gem 'simple_form', '~> 4.1'
 gem 'simplecov'
@@ -38,8 +40,6 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 # Use Redis adapter to run Action Cable in production
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
-gem 'devise'
-gem 'devise-bootstrap-views'
 gem 'faker'
 gem 'redis', '~> 4.0'
 
