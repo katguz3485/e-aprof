@@ -28,6 +28,8 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'html2haml'
+gem 'devise-i18n'
+gem 'devise-bootstrap-views'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'omniauth-google-oauth2',       '~> 0.5.1' # for Google Authentication

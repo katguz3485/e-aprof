@@ -8,7 +8,7 @@
       %ul.nav.navbar-nav.ml-auto
         - if user_signed_in?
           %li.nav-item
-            = link_to "Something", about_path, class: 'nav-link'
+            = link_to "Something", root_path, class: 'nav-link'
           .dropdown.show
             %a#dropdown-menu-link.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
               = current_user.email
