@@ -25,7 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'bootstrap', '~> 4.3.1'
-gem 'devise-bootstrap-views'
+gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'html2haml'
 gem 'jbuilder', '~> 2.5'
@@ -38,8 +38,6 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 # Use Redis adapter to run Action Cable in production
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
-gem 'devise'
-gem 'devise-bootstrap-views'
 gem 'faker'
 gem 'redis', '~> 4.0'
 

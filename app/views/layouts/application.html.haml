@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title E-Adiunkt
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %link{:href => "/apple-icon-60x60.png", :rel => "apple-touch-icon", :sizes => "60x60"}/
+    %header
+      = render 'layouts/shared/navigation'
+      .container-fluid
+        .row
+          .col-md-12
+    %main{:role => "main"}
+      = render 'layouts/shared/messages'
+      .container
+        .row
+          .col-12
+            = yield
+      = render 'layouts/shared/footer'
