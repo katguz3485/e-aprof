@@ -7,6 +7,5 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-#   , registrations: 'users/registrations's
 
 end
