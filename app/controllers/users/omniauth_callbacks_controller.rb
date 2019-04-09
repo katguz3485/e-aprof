@@ -3,7 +3,7 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   before_action :authenticate_user!
 
-  def google_oauth2
+  def google
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?
