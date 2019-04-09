@@ -113,6 +113,10 @@ Devise.setup do |config|
   # a value of 20 is already extremely slow: approx. 60 seconds for 1 calculation).
   config.stretches = Rails.env.test? ? 1 : 11
 
+  config.omniauth :google, Rails.application.credentials.dig(:google, :client_id), Rails.application.credentials.dig(:google, :client_secret), {}
+
+
+  #config.omniauth :google_oauth2, Rails.application.credentials.dig(:google, :client_id), Rails.application.credentials.dig(:google, :client_secret), name: 'google', verify_iss: false
   # Set up a pepper to generate the hashed password.
   # config.pepper = '3862f372c38f2a41f716e8c2210d5fb4cbdd73c57775a1562cc3ee772073bb65646e2a79eb24a81e063f74f8973bf697a80efc4e088e07392fcac60cafc4edc7'
 
