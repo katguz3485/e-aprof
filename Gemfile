@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'bootstrap', '~> 4.3.1'
+gem 'better_errors'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'html2haml'
