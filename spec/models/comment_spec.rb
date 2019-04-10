@@ -9,7 +9,7 @@ RSpec.describe Comment, type: :model do
   end
 
   describe 'associations' do
-    it { should belong_to :purchase_order }
+    it { should belong_to :commentable }
     it { should belong_to :user }
   end
 
