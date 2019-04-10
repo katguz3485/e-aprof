@@ -11,7 +11,7 @@ RSpec.describe PurchaseOrder, type: :model do
 
   describe 'associations' do
     it { should have_many :comments }
-    it { should have_many(:users).through(:comments) }
+    it { should have_many(:users).through(:user_orders) }
     it { should have_many :item_categories }
     it { should have_many(:items).through(:item_categories) }
     it { should belong_to :grant }

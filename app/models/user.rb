@@ -6,9 +6,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google]
 
-  has_many :purchase_orders
   has_many :comments
-  has_many :purchase_orders, through: :comments
+  has_many :user_orders
+  has_many :purchase_orders, through: :user_orders
 
 
   def self.from_omniauth(auth)
