@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :user_orders
   has_many :purchase_orders, through: :user_orders
-
+  has_many :items
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -27,5 +27,4 @@ class User < ApplicationRecord
   #     end
   #   end
   # end
-
 end

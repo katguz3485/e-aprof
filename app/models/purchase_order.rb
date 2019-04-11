@@ -6,7 +6,6 @@ class PurchaseOrder < ApplicationRecord
   has_many :user_orders
   has_many :users, through: :user_orders
 
-
   has_many :item_categories
   has_many :items, through: :item_categories
   belongs_to :grant

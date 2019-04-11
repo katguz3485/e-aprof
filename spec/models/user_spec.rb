@@ -11,6 +11,6 @@ RSpec.describe User, type: :model do
     it { should have_many :user_orders }
     it { should have_many(:purchase_orders).through(:user_orders) }
     it { should have_many :comments }
-
+    it { should have_many :items}
   end
 end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # t.string "type", null: false
 # t.bigint "user_id", null: false
 # t.string "item_name", default: "", null: false
@@ -20,6 +21,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   scope :chemicals, -> { where(type: 'Chemical') }
+  scope :expendables, -> { where(type: 'Expendables') }
 
   validates :type, presence: true
   validates :item_name, presence: true
@@ -29,10 +31,4 @@ class Item < ApplicationRecord
   validates :provider_name, presence: true
   validates :number_of_items, presence: true
   validates :packaging, presence: true
-
-
-
-
-
-
 end
