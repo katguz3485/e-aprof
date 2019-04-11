@@ -20,6 +20,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   scope :chemicals, -> { where(type: 'Chemical') }
+  scope :expendables, -> { where(type: 'Expendables') }
 
   validates :type, presence: true
   validates :item_name, presence: true
@@ -29,10 +30,4 @@ class Item < ApplicationRecord
   validates :provider_name, presence: true
   validates :number_of_items, presence: true
   validates :packaging, presence: true
-
-
-
-
-
-
 end
