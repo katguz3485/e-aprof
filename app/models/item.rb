@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # t.string "type", null: false
 # t.bigint "user_id", null: false
 # t.string "item_name", default: "", null: false

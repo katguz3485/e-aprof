@@ -24,16 +24,16 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'bootstrap', '~> 4.3.1'
 gem 'better_errors'
+gem 'bootstrap', '~> 4.3.1'
+gem 'devise-bootstrap-views'
+gem 'devise-i18n'
 gem 'font-awesome-rails'
 gem 'haml-rails'
 gem 'html2haml'
-gem 'devise-i18n'
-gem 'devise-bootstrap-views'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
-gem 'omniauth-google-oauth2',       '~> 0.5.1' # for Google Authentication
+gem 'omniauth-google-oauth2', '~> 0.5.1' # for Google Authentication
 gem 'pundit', '~> 2.0', '>= 2.0.1'
 gem 'simple_form', '~> 4.1'
 gem 'simplecov'
