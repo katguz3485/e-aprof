@@ -17,12 +17,10 @@ end
 purchase_order_names = ["Chemicals", "Gloves", "Solvents", "Needles and Syringes"]
 grant_ids = Grant.all.pluck(:id)
 
-commentable_type_list = ["PurchaseOrder", "Item"]
 
 
 5.times do |n|
-  user = User.new(email: "user#{n}@mail.com",
-                  password: 'abcd123')
+  user = User.new(email: "user#{n}@mail.com", password: 'abcd123')
   user.save!
 
 end
@@ -38,18 +36,38 @@ User.all.each do
   end
 end
 
-
 Rails.logger.info "#{User.all.count} users created"
 Rails.logger.info "#{PurchaseOrder.all.count} purchase orders created"
 Rails.logger.info "#{UserOrder.all.count} user orders created"
 
+provider_list = %w[VWR Witko Chemat Apollo]
+
+PurchaseOrder.all.each do
+  ItemCategory.create!(purchase_order_id: PurchaseOrder.pluck(:id).sample)
+  2.times do
+    Expendable.create!(user_id: User.all.pluck(:id).sample, item_name: "rekawiczki nitrylowe s",
+                       link: Faker::Internet.url, item_price: 10.0,
+                       catalogue_number: Faker::Code.npi,
+                       provider_name: provider_list.sample,
+                       number_of_items: (1..3).to_a.sample,
+                       packaging: "1 szt", item_category_id: ItemCategory.all.pluck(:id).sample)
+
+    Chemical.create!(user_id: User.all.pluck(:id).sample, item_name: "rekawiczki nitrylowe s",
+                     link: Faker::Internet.url, item_price: 10.0,
+                     catalogue_number: Faker::Code.npi,
+                     provider_name: provider_list.sample,
+                     number_of_items: (1..3).to_a.sample,
+                     packaging: "1 szt", item_category_id: ItemCategory.all.pluck(:id).sample,
+                     cid: (1233..2000).to_a.sample,
+                     formula_url: Faker::Internet.url, cas_number: "65-85-0",
+                     purity: "#{(80..99).to_a.sample}%")
+  end
+end
 
 
-
-
-
-
-
+Rails.logger.info "#{ItemCategory.all.count} item categories created"
+Rails.logger.info "#{Expendable.all.count} expendables created"
+Rails.logger.info "#{Chemical.all.count} chemicals created"
 
 
 
