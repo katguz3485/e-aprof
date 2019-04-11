@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2019_04_09_170801) do
-
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,7 +73,6 @@ ActiveRecord::Schema.define(version: 2019_04_09_170801) do
     t.bigint "grant_id"
     t.date "planned_order_date", null: false
     t.index ["grant_id"], name: "index_purchase_orders_on_grant_id"
-    t.index ["user_order_id"], name: "index_purchase_orders_on_user_order_id"
   end
 
   create_table "user_orders", force: :cascade do |t|
@@ -102,13 +99,12 @@ ActiveRecord::Schema.define(version: 2019_04_09_170801) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "purchase_orders"
   add_foreign_key "comments", "users"
   add_foreign_key "item_categories", "purchase_orders"
   add_foreign_key "items", "item_categories"
   add_foreign_key "items", "users"
   add_foreign_key "purchase_orders", "grants"
-  add_foreign_key "purchase_orders", "user_orders"
   add_foreign_key "user_orders", "purchase_orders"
   add_foreign_key "user_orders", "users"
-
 end
