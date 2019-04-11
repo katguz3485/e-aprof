@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_194747) do
+ActiveRecord::Schema.define(version: 2019_04_09_170801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.bigint "user_id"
+    t.bigint "purchase_order_id"
     t.string "commentable_type"
     t.bigint "commentable_id"
     t.string "description", default: "", null: false
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_194747) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["purchase_order_id"], name: "index_comments_on_purchase_order_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -70,9 +72,7 @@ ActiveRecord::Schema.define(version: 2019_04_10_194747) do
     t.datetime "updated_at", null: false
     t.bigint "grant_id"
     t.date "planned_order_date", null: false
-    t.bigint "user_order_id"
     t.index ["grant_id"], name: "index_purchase_orders_on_grant_id"
-    t.index ["user_order_id"], name: "index_purchase_orders_on_user_order_id"
   end
 
   create_table "user_orders", force: :cascade do |t|
@@ -93,21 +93,18 @@ ActiveRecord::Schema.define(version: 2019_04_10_194747) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "comment_id"
     t.string "provider"
     t.string "uid"
-    t.index ["comment_id"], name: "index_users_on_comment_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "purchase_orders"
   add_foreign_key "comments", "users"
   add_foreign_key "item_categories", "purchase_orders"
   add_foreign_key "items", "item_categories"
   add_foreign_key "items", "users"
   add_foreign_key "purchase_orders", "grants"
-  add_foreign_key "purchase_orders", "user_orders"
   add_foreign_key "user_orders", "purchase_orders"
   add_foreign_key "user_orders", "users"
-  add_foreign_key "users", "comments"
 end
