@@ -18,7 +18,6 @@ purchase_order_names = ["Chemicals", "Gloves", "Solvents", "Needles and Syringes
 grant_ids = Grant.all.pluck(:id)
 
 
-
 5.times do |n|
   user = User.new(email: "user#{n}@mail.com", password: 'abcd123')
   user.save!
@@ -44,6 +43,7 @@ provider_list = %w[VWR Witko Chemat Apollo]
 
 PurchaseOrder.all.each do
   ItemCategory.create!(purchase_order_id: PurchaseOrder.pluck(:id).sample)
+
   2.times do
     Expendable.create!(user_id: User.all.pluck(:id).sample, item_name: "rekawiczki nitrylowe s",
                        link: Faker::Internet.url, item_price: 10.0,
@@ -61,14 +61,30 @@ PurchaseOrder.all.each do
                      cid: (1233..2000).to_a.sample,
                      formula_url: Faker::Internet.url, cas_number: "65-85-0",
                      purity: "#{(80..99).to_a.sample}%")
+
   end
 end
-
 
 Rails.logger.info "#{ItemCategory.all.count} item categories created"
 Rails.logger.info "#{Expendable.all.count} expendables created"
 Rails.logger.info "#{Chemical.all.count} chemicals created"
 
+
+PurchaseOrder.all.each do |purchase_order|
+  purchase_order.comments.create!(user_id: User.all.pluck(:id).sample,
+                                  description: Faker::StarWars.quote, title:
+                                      "#{purchase_order.name}")
+end
+
+Rails.logger.info "#{PurchaseOrder.all.count} comments for purchase orders created"
+
+Item.all.each do |item|
+  item.comments.create!(user_id: User.all.pluck(:id).sample,
+                        description: Faker::StarWars.quote, title:
+                            "#{item.item_name} #{item.provider_name}")
+end
+
+Rails.logger.info "#{Item.all.count} comments for items created"
 
 
 

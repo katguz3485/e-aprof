@@ -17,6 +17,7 @@
 # t.index ["user_id"], name: "index_items_on_user_id"
 
 class Item < ApplicationRecord
+  has_many :comments, as: :commentable
   belongs_to :item_category
   belongs_to :user
 
