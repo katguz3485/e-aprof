@@ -16,16 +16,14 @@ ActiveRecord::Schema.define(version: 2019_04_09_170801) do
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "purchase_order_id"
-    t.string "commentable_type"
-    t.bigint "commentable_id"
+    t.bigint "user_id", null: false
+    t.string "commentable_type", null: false
+    t.bigint "commentable_id", null: false
     t.string "description", default: "", null: false
     t.string "title", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
-    t.index ["purchase_order_id"], name: "index_comments_on_purchase_order_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -57,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_170801) do
     t.string "remarks", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "item_category_id"
+    t.bigint "item_category_id", null: false
     t.integer "cid", default: 0, null: false
     t.string "formula_url", default: "", null: false
     t.string "cas_number", default: "", null: false
@@ -70,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_170801) do
     t.string "name", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "grant_id"
+    t.bigint "grant_id", null: false
     t.date "planned_order_date", null: false
     t.index ["grant_id"], name: "index_purchase_orders_on_grant_id"
   end
@@ -99,7 +97,6 @@ ActiveRecord::Schema.define(version: 2019_04_09_170801) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "comments", "purchase_orders"
   add_foreign_key "comments", "users"
   add_foreign_key "item_categories", "purchase_orders"
   add_foreign_key "items", "item_categories"

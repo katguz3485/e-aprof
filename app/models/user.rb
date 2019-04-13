@@ -6,7 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: %i[google]
 
-  has_many :comments
+  has_many :comments, as: :commentable
   has_many :user_orders
   has_many :purchase_orders, through: :user_orders
   has_many :items
