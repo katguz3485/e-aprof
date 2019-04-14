@@ -1,4 +1,4 @@
 %a.list-group-item.list-group-item-action.active{:href => "#"}
-  %h4 List of Orders
+  %h4 Order number #{@purchase_order.id} items
   %a.list-group-item.list-group-item-action
-    =render 'purchase_orders_table'
+    =render 'purchase_orders_items_table'
