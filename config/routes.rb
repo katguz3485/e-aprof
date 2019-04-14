@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :purchase_orders
-  resources :user_orders
+
+
 end
