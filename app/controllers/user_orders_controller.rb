@@ -5,7 +5,6 @@ class UserOrdersController < ApplicationController
   before_action :set_purchase_order, only: %i[show edit update destroy]
   before_action :set_user_order, only: %i[show edit update destroy]
 
-
   def index
     @user_orders = current_user.purchase_orders
   end
@@ -23,5 +22,4 @@ class UserOrdersController < ApplicationController
   def set_purchase_order
     @purchase_order = PurchaseOrder.find(params[:purchase_order_id])
   end
-
 end

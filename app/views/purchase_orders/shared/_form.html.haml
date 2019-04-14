@@ -3,5 +3,5 @@
     = simple_form_for @purchase_order, html: { multipart: true} do |f|
       = f.input :name
       = f.input :planned_order_date, as: :date
-      = f.association :grant, label_method: :grant_name, include_blank: false, item_wrapper_class: "style_item", prompt: 'Chooserder'
+      = f.association :grant, label_method: :grant_name, include_blank: false, item_wrapper_class: "style_item", prompt: 'Choose grant'
       = f.button :submit, class: 'btn btn-outline-primary'
