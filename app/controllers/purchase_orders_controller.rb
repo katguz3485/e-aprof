@@ -3,7 +3,7 @@
 class PurchaseOrdersController < ApplicationController
   before_action
   before_action :set_purchase_order, only: %i[show edit update destroy]
-  before_action :set_user_order, only: %i[show edit update destroy]
+
 
   def index
     @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(6)
