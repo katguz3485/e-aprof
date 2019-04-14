@@ -20,13 +20,12 @@ class PurchaseOrdersController < ApplicationController
     if @purchase_order.save
       @user_order = current_user.user_orders.new(purchase_order_id: @purchase_order.id)
       @user_order.save
+      binding.pry
       redirect_to user_orders_path, notice: I18n.t('shared.created', resource: 'Purchase Order')
     else
       flash.now.alert = I18n.t('shared.error_create')
       render :new
     end
-
-
   end
 
   def show;

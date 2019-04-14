@@ -10,19 +10,6 @@ class UserOrdersController < ApplicationController
     @user_orders = current_user.purchase_orders
   end
 
-
-  # User.all.each do
-  #   2.times do
-  #     PurchaseOrder.create!(name: purchase_order_names.sample,
-  #                           planned_order_date: Faker::Date.forward(200),
-  #                           grant_id: grant_ids.sample)
-  #     UserOrder.create!(user_id: User.all.pluck(:id).sample,
-  #                       purchase_order_id: PurchaseOrder.pluck(:id).sample)
-  #
-  #   end
-  # end
-
-
   private
 
   def set_user_order
