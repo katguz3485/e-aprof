@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < ApplicationController
+  before_action :authenticate_user!
 
-  def index
-    # we would like to show upcoming orders
-    @purchase_orders = PurchaseOrder.all
-  end
+  def index; end
 end
