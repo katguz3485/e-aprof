@@ -1,0 +1,16 @@
+%tr
+  -#%td= @user_order.something
+  -#%td=
+  %td
+    = link_to user_order_path(@user_order), { title: t('shared.show') } do
+      %button.btn.btn-primary
+        = fa_icon "search"
+    = link_to edit_user_order_path(@user_order), { title: t('shared.edit') } do
+      %button.btn.btn-primary
+        = fa_icon "edit"
+    = link_to user_order_path(@user_order), { method: :delete, title: t('shared.delete') } do
+      %button.btn.btn-primary
+        = fa_icon "times"
+    = link_to user_orders_path, { title: t('shared.show_user_orders') } do
+      %button.btn.btn-primary
+        = fa_icon "list"

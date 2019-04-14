@@ -3,8 +3,8 @@
   .row
     .card.border-light.mb-3{:style => "max-width: 15rem;"}
       = link_to purchase_orders_path do
-        %img.card-img-top{:alt => "Upcoming Orders", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/basket1.jpeg"}
-          %h5.card-title Upcoming Orders
+        %img.card-img-top{:alt => "sUpcoming Orders", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/basket1.jpeg"}
+          %h5.card-title All Upcoming Orders
           %p.card-text Add items to upcoming orders
 
     .card.border-light.mb-3{:style => "max-width: 15rem;"}
@@ -14,7 +14,7 @@
           %p.card-text Create new order
 
     .card.border-light.mb-3{:style => "max-width: 15rem;"}
-      = link_to root_path do
+      = link_to user_orders_path do
         %img.card-img-top{:alt => "My Orders", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/user_basket.png"}
           %h5.card-title My Orders
           %p.card-text View and edit your orders
@@ -24,3 +24,17 @@
         %img.card-img-top{:alt => "Generate File", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/file_export2.png"}
           %h5.card-title Generate File
           %p.card-text Generate File summarizing your order
+
+    .card.border-light.mb-3{:style => "max-width: 15rem;"}
+      = link_to root_path do
+        %img.card-img-top{:alt => "Chemicals", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/chemical_3.png"}
+          %h5.card-title  Upcoming Chemical Orders
+          %p.card-text See and edit current order
+
+    .card.border-light.mb-3{:style => "max-width: 15rem;"}
+      = link_to root_path do
+        %img.card-img-top{:alt => "Generate File", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/expendable_1.png"}
+          %h5.card-title  Upcoming Expendable Orders
+          %p.card-text See and edit current order
+
+
