@@ -1,17 +1,11 @@
-# frozen_string_literal: true
-
-class PurchaseOrdersController < ApplicationController
+class UserOrdersController < ApplicationController
 
   before_action :set_purchase_order, only: [:show]
 
-
   def index
-    @purchase_orders = PurchaseOrder.where("planned_order_date >= ?", Date.today).page(params[:page]).per(6)
+    @user_orders = current_user.purchase_orders
   end
 
-
-  def show
-  end
 
   private
 
@@ -22,5 +16,6 @@ class PurchaseOrdersController < ApplicationController
   def purchase_order_params
     params.require(:purchase_order).permit(:id)
   end
+
 
 end
