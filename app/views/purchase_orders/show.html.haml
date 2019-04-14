@@ -1,6 +1,6 @@
 .row
   %a.list-group-item.list-group-item-action.margin_list
     %h4 Order number
-    %h6 #{@purchase_order.id} items
+    %h6 #{@purchase_order.items.count} items
     %a.list-group-item.list-group-item-action
       =render 'purchase_orders_items_table'

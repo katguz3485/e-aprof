@@ -6,7 +6,7 @@ class PurchaseOrdersController < ApplicationController
 
 
   def index
-    @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(6)
+    @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(30)
   end
 
   def new
