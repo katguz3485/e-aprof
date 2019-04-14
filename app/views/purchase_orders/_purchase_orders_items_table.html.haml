@@ -1,0 +1,22 @@
+.row
+  .col-md-8
+    %table.table.table-condensed.center-content
+      %thead
+        %tr
+
+          %th= t(' item name')
+          %th= t(' vendor link')
+          %th= t(' item price')
+          %th= t(' catalogue number')
+
+
+
+        %tbody
+          %tr
+            - @purchase_order.items.find_each do |purchase_order_item|
+              %tr
+                %td= purchase_order_item.item_name
+                %td= link_to purchase_order_item.link, purchase_order_item.link
+                %td= purchase_order_item.item_price
+                %td= purchase_order_item.catalogue_number
+
