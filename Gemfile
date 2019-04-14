@@ -43,8 +43,8 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'faker'
-gem 'redis', '~> 4.0'
 gem 'pry-rails'
+gem 'redis', '~> 4.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -1,5 +1,3 @@
-# Additional translations at https://github.com/plataformatec/devise/wiki/I18n
-
 en:
   devise:
     confirmations:
@@ -65,3 +63,10 @@ en:
         other: "%{count} errors prohibited this %{resource} from being saved:"
   shared:
     new_purchase_order: "New Order"
+    created: "%{resource} has been created!"
+    error_create: "Something went wrong. Check ii all fields contain the data."
+  logout: "Logout"
+  navbar:
+    edit_profile: "Edit Profile"
+    signin: "Sign In"
+    register: "Sign Up"
