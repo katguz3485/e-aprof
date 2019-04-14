@@ -2,34 +2,34 @@
 .navbar_styled {
 
   a {
-    color: $black;
+    color: $white;
   }
 
   &:visited {
-    color: $black;
+    color: $white;
   }
 
   &:hover {
-    color: $gray-200;
+    color: $gray-100;
 
   }
 
   .dropdown-menu {
-    background-color: $gray-500;
+    background-color: $white;
     margin-bottom: 10px;
     padding-left: 15px;
     color: black;
 
     a {
-      color: $black;
+      color: $white;
 
       &:visited {
         color: $black;
       }
 
       &:hover {
-        color: $black;
-        background-color: $gray-300;
+        color: $gray-300;
+        background-color: $white;
       }
     }
   }

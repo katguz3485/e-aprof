@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PurchaseOrdersController < ApplicationController
 
   before_action :set_purchase_order, only: [:show]
@@ -20,6 +22,5 @@ class PurchaseOrdersController < ApplicationController
   def purchase_order_params
     params.require(:purchase_order).permit(:id)
   end
-
 
 end
