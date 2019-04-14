@@ -1,9 +1,12 @@
 class PurchaseOrdersController < ApplicationController
+
   before_action :set_purchase_order, only: [:show]
+
 
   def index
     @purchase_orders = PurchaseOrder.page(params[:page]).per(8)
   end
+
 
   def show
   end
