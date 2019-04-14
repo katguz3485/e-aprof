@@ -9,7 +9,6 @@ RSpec.describe UserOrder, type: :model do
   end
 
   describe 'db_columns' do
-    it { should have_db_column :name }
     it { should have_db_column :user_id }
     it { should have_db_column :purchase_order_id }
   end
