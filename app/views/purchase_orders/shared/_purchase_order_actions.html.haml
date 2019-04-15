@@ -1,0 +1,15 @@
+%tr
+  %td
+    = link_to new_purchase_order_path(@purchase_order), { title: t('shared.edit') } do
+      %button.btn.btn-outline-success.btn_margin
+        = fa_icon "plus"
+  %td
+    = link_to edit_purchase_order_path(@purchase_order), {title: "edit"} do
+      %button.btn.btn-outline-warning.btn_margin
+        = fa_icon "edit"
+  %td
+    = link_to  purchase_order_path(@purchase_order), { method: :delete, title: t('shared.delete') } do
+      %button.btn.btn-outline-danger.btn_margin
+        = fa_icon "trash"
+
+
