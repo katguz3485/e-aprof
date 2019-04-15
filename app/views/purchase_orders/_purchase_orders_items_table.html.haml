@@ -3,13 +3,11 @@
     %table.table.table-condensed.center-content.margin_table
       %thead
         %tr
-
           %th= t(' item name')
           %th= t(' vendor link')
           %th= t(' item price')
           %th= t(' catalogue number')
-
-
+          %th= t('shared.actions')
 
         %tbody
           %tr
@@ -19,4 +17,7 @@
                 %td= link_to purchase_order_item.link, purchase_order_item.link
                 %td= purchase_order_item.item_price
                 %td= purchase_order_item.catalogue_number
+                = render 'purchase_orders/shared/purchase_order_actions'
+
+
 

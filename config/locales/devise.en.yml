@@ -65,6 +65,10 @@ en:
     new_purchase_order: "New Order"
     created: "%{resource} has been created!"
     error_create: "Something went wrong. Check ii all fields contain the data."
+    actions: "Actions"
+    show: "Show"
+    edit: "Edit"
+    delete: "Delete"
   logout: "Logout"
   navbar:
     edit_profile: "Edit Profile"
