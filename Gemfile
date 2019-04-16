@@ -25,6 +25,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'better_errors'
+gem 'binding_of_caller'
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise-bootstrap-views'
 gem 'devise-i18n'

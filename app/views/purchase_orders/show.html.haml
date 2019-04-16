@@ -3,4 +3,7 @@
     %h4 Order number
     %h6 #{@purchase_order.items.count} items
     %a.list-group-item.list-group-item-action
-      =render 'purchase_orders_items_table'
+      = render 'purchase_orders_items_table'
+
+= render partial: 'comments/shared/comments', locals: { commentable: @purchase_order}
+= render partial: 'comments/shared/form', locals: { commentable: @purchase_order}
