@@ -1,0 +1,10 @@
+.row
+  .col-xs-12
+    = simple_form_for [commentable, commentable.comments.new] do |f|
+      .form-group
+        .control-label.col-sm-2
+          = f.input :title, error: false, required: false
+          = f.input :description, error: false, required: false
+      .form-group
+        .center.col-sm-offset-1.col-sm-10
+          = f.button :submit, class: "btn btn-primary"

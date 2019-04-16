@@ -69,6 +69,7 @@ en:
     show: "Show"
     edit: "Edit"
     delete: "Delete"
+    deleted: "%{resource has been deleted}"
   logout: "Logout"
   navbar:
     edit_profile: "Edit Profile"

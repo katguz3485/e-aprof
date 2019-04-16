@@ -1,0 +1,12 @@
+%h5 All Comments
+%table.table.table-hover
+  - commentable.comments.is_created.each do |comment|
+    %tr
+      %td= comment.title
+      %td= comment.description
+      %td= "Commenter: #{comment.user.email}"
+      %td
+        = link_to polymorphic_path([commentable, comment]), { method: :delete, title: t('shared.delete') } do
+          %button.btn.btn-outline-danger.btn_margin
+            = fa_icon "trash"
+
