@@ -1,14 +1,15 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[destroy]
-  before_action :load_commentable, only: %i[index, new, create, destroy]
+  before_action :load_commentable, only: %i[index, new, create]
 
 
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    redirect_to @commentable, notice: I18n.t('shared.created', resource: 'Comment')
+    # redirect_to [@commentable, :comments], notice: "Your comment was successfully posted."
+    redirect_to @commentable, notice: "Your comment was successfully posted."
   end
 
 
@@ -17,6 +18,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @commentable = load_commentable
     if current_user.id == @comment.user.id
       @comment.destroy
       redirect_to @commentable, notice: I18n.t('shared.deleted', resource: 'Comment')
@@ -25,6 +27,9 @@ class CommentsController < ApplicationController
 
     end
   end
+
+
+
 
   private
 
@@ -42,3 +47,9 @@ class CommentsController < ApplicationController
   end
 
 end
+
+
+
+
+
+
