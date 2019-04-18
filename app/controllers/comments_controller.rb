@@ -1,14 +1,13 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[destroy]
-  before_action :load_commentable, only: %i[index, new, create]
+  before_action :load_commentable, only: %i[index, new, create, destroy]
 
 
   def create
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    # redirect_to [@commentable, :comments], notice: "Your comment was successfully posted."
     redirect_to @commentable, notice: "Your comment was successfully posted."
   end
 
@@ -19,13 +18,14 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
-    @commentable = @comment.commentable
-    @comment.destroy
-    if @comment.destroy
+    if current_user.id == @comment.user.id
+      @comment.destroy
       redirect_to @commentable, notice: "Comment deleted."
+    else
+      redirect_to @commentable, notice: "You can't delete comment written by others."
+
     end
   end
-
 
 
   private
