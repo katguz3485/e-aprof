@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.new(comment_params)
     @comment.user = current_user
     @comment.save
-    redirect_to @commentable, notice: "Your comment was successfully posted."
+    redirect_to @commentable, notice: I18n.t('shared.created', resource: 'Comment')
   end
 
 
@@ -17,16 +17,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     if current_user.id == @comment.user.id
       @comment.destroy
-      redirect_to @commentable, notice: "Comment deleted."
+      redirect_to @commentable, notice: I18n.t('shared.deleted', resource: 'Comment')
     else
-      redirect_to @commentable, notice: "You can't delete comment written by others."
+      redirect_to @commentable, notice: I18n.t('shared.restricted')
 
     end
   end
-
 
   private
 
