@@ -22,7 +22,7 @@ class Item < ApplicationRecord
   belongs_to :user
 
   scope :chemicals, -> { where(type: 'Chemical') }
-  scope :expendables, -> { where(type: 'Expendables') }
+  scope :expendables, -> { where(type: 'Expendable') }
 
   validates :type, presence: true
   validates :item_name, presence: true

@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :chemicals, controller: 'item', type: 'Chemical'
+
+  resources :expendables, controller: 'item', type: 'Expendable'
+
   resources :user_orders
 
 end

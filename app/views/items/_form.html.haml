@@ -1,0 +1,14 @@
+.row
+  .col-md-12
+    = simple_form_for @item, html: { multipart: true} do |f|
+      = f.input :item_owner, collection: [:group1, :group2, :group3]
+      = f.input :quantity
+      = f.input :amount
+      = f.input :comment
+      = f.input :daily_usage
+      = f.input :present_in_respiratory_zone, as: :boolean, checked_value: true, unchecked_value: false
+      = f.input :room
+      = f.input :shelf
+      = f.input :number
+      = f.button :submit, class: 'btn btn-outline-success'
+
