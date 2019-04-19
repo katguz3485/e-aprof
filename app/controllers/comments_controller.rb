@@ -1,13 +1,14 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_comment, only: %i[destroy]
-  before_action :load_commentable, only: %i[index, new, create]
+  before_action :load_commentable, only: %i[index new create]
 
   def create
     @comment = @commentable.comments.new(comment_params.merge(user: current_user))
     @comment.save
     redirect_to @commentable, notice: I18n.t('shared.created', resource: 'Comment')
-    # binding.pry
   end
 
   def show
@@ -24,7 +25,6 @@ class CommentsController < ApplicationController
     end
   end
 
-
   private
 
   def comment_params
@@ -39,11 +39,4 @@ class CommentsController < ApplicationController
   def set_comment
     @comment = Comment.find(params[:id])
   end
-
 end
-
-
-
-
-
-

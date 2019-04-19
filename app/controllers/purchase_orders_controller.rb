@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PurchaseOrdersController < ApplicationController
-  
   before_action :set_purchase_order, only: %i[show edit update destroy]
 
   def index
@@ -36,7 +35,4 @@ class PurchaseOrdersController < ApplicationController
   def purchase_order_params
     params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date)
   end
-
-
-
 end
