@@ -70,6 +70,7 @@ en:
     edit: "Edit"
     delete: "Delete"
     deleted: "%{resource} has been deleted"
+    updated: "%{resource} has been updated"
     restricted: "You can't delete the comment written by others"
   logout: "Logout"
   navbar:

@@ -34,8 +34,7 @@ class PurchaseOrdersController < ApplicationController
 
   def update
     if @purchase_order.update(purchase_order_params)
-      flash[:success] = "Your order was successfully updated"
-      redirect_to purchase_order_path(@purchase_order)
+      redirect_to user_orders_path, notice: I18n.t('shared.updated', resource: 'Purchase Order')
     else
       render :edit
     end
@@ -43,8 +42,7 @@ class PurchaseOrdersController < ApplicationController
 
   def destroy
     @purchase_order.destroy
-    flash[:danger] = "The article was destroyed"
-    redirect_to purchase_order_path
+    redirect_to user_orders_path, notice: I18n.t('shared.deleted', resource: 'Purchase Order')
   end
 
 
