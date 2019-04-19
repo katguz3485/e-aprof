@@ -2,6 +2,7 @@
 
 class PurchaseOrdersController < ApplicationController
   before_action :set_purchase_order, only: %i[show edit update destroy]
+  before_action :requires_same_user, only: %i[ update destroy]
 
   def index
     @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(30)
@@ -24,9 +25,28 @@ class PurchaseOrdersController < ApplicationController
     end
   end
 
-  def show; end
+  def show;
+  end
 
-  def edit; end
+  def edit;
+  end
+
+
+  def update
+    if @purchase_order.update(purchase_order_params)
+      flash[:success] = "Your order was successfully updated"
+      redirect_to purchase_order_path(@purchase_order)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @purchase_order.destroy
+    flash[:danger] = "The article was destroyed"
+    redirect_to purchase_order_path
+  end
+
 
   private
 
@@ -36,5 +56,12 @@ class PurchaseOrdersController < ApplicationController
 
   def purchase_order_params
     params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date)
+  end
+end
+
+def requires_same_user
+  if @purchase_order.user_orders.where(user_id: current_user.id) == current_user.id
+    flash[:danger] = "Access denied"
+    redirect_to purchase_order_path
   end
 end
