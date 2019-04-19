@@ -26,10 +26,12 @@ class PurchaseOrdersController < ApplicationController
 
   def show; end
 
+  def edit; end
+
   private
 
   def set_purchase_order
-    @purchase_order = PurchaseOrder.find(params[:id])
+    @purchase_order ||= PurchaseOrder.find(params[:id])
   end
 
   def purchase_order_params
