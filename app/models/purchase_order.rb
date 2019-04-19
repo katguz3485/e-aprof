@@ -3,7 +3,7 @@
 class PurchaseOrder < ApplicationRecord
   has_many :comments, as: :commentable
 
-  has_many :user_orders
+  has_many :user_orders, dependent: :destroy
   has_many :users, through: :user_orders
 
   has_many :item_categories
