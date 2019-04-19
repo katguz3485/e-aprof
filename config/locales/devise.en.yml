@@ -69,7 +69,7 @@ en:
     show: "Show"
     edit: "Edit"
     delete: "Delete"
-    deleted: "%{resource has been deleted}"
+    deleted: "%{resource} has been deleted"
     restricted: "You can't delete the comment written by others"
   logout: "Logout"
   navbar:
