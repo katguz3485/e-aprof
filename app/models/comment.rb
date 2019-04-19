@@ -5,8 +5,4 @@ class Comment < ApplicationRecord
   validates :title, :description, presence: true
   belongs_to :user
   scope :is_created, -> { where.not(id: nil) }
-
-
-
-
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PurchaseOrdersController < ApplicationController
-  
   before_action :set_purchase_order, only: %i[show edit update destroy]
 
   def index
@@ -27,16 +26,15 @@ class PurchaseOrdersController < ApplicationController
 
   def show; end
 
+  def edit; end
+
   private
 
   def set_purchase_order
-    @purchase_order = PurchaseOrder.find(params[:id])
+    @purchase_order ||= PurchaseOrder.find(params[:id])
   end
 
   def purchase_order_params
     params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date)
   end
-
-
-
 end

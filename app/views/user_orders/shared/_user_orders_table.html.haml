@@ -7,6 +7,7 @@
           %th= t('deadline')
           %th= t('grant')
           %th= t('items_number')
+          %th= t('shared.actions')
 
         %tbody
           %tr
@@ -16,5 +17,18 @@
                 %td= purchase_order.planned_order_date
                 %td= purchase_order.grant.grant_name
                 %td= purchase_order.items.count
+                %td
+                  = link_to new_purchase_order_path(purchase_order), { title: t('shared.edit') } do
+                    %button.btn.btn-outline-success.btn_margin
+                      = fa_icon "plus"
+
+                  = link_to edit_purchase_order_path(purchase_order), {title: "edit"} do
+                    %button.btn.btn-outline-warning.btn_margin
+                      = fa_icon "edit"
+
+                  = link_to  purchase_order_path(purchase_order), { method: :delete, title: t('shared.delete') } do
+                    %button.btn.btn-outline-danger.btn_margin
+                      = fa_icon "trash"
 
 
+s

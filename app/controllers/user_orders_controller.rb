@@ -9,6 +9,11 @@ class UserOrdersController < ApplicationController
     @user_orders = current_user.purchase_orders
   end
 
+  def show
+
+  end
+
+
   private
 
   def set_user_order
@@ -20,6 +25,6 @@ class UserOrdersController < ApplicationController
   end
 
   def set_purchase_order
-    @purchase_order = PurchaseOrder.find(params[:purchase_order_id])
+    @purchase_order = current_user.purchase_orders.find(params[:purchase_order_id])
   end
 end
