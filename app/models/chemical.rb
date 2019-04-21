@@ -7,6 +7,7 @@
 #
 
 class Chemical < Item
+  belongs_to :user
   validates :cid, presence: true
   validates :cas_number, presence: true
   validates :formula_url, presence: true

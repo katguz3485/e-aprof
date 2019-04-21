@@ -46,14 +46,14 @@ PurchaseOrder.all.each do
 
   2.times do
     Expendable.create!(user_id: User.all.pluck(:id).sample, item_name: "rekawiczki nitrylowe s",
-                       link: Faker::Internet.url, item_price: 10.0,
+                       link: Faker::Internet.url, item_price: 10.0, currency_name: "PLN",
                        catalogue_number: Faker::Code.npi,
                        provider_name: provider_list.sample,
                        number_of_items: (1..3).to_a.sample,
                        packaging: "1 szt", item_category_id: ItemCategory.all.pluck(:id).sample)
 
     Chemical.create!(user_id: User.all.pluck(:id).sample, item_name: "rekawiczki nitrylowe s",
-                     link: Faker::Internet.url, item_price: 10.0,
+                     link: Faker::Internet.url, item_price: 10.0, currency_name: "EUR",
                      catalogue_number: Faker::Code.npi,
                      provider_name: provider_list.sample,
                      number_of_items: (1..3).to_a.sample,

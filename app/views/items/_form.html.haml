@@ -1,14 +1,22 @@
 .row
   .col-md-12
     = simple_form_for @item, html: { multipart: true} do |f|
-      = f.input :item_owner, collection: [:group1, :group2, :group3]
-      = f.input :quantity
-      = f.input :amount
-      = f.input :comment
-      = f.input :daily_usage
-      = f.input :present_in_respiratory_zone, as: :boolean, checked_value: true, unchecked_value: false
-      = f.input :room
-      = f.input :shelf
-      = f.input :number
-      = f.button :submit, class: 'btn btn-outline-success'
+      = f.input  :type, as: :select
+      = f.input :item_name
+      = f.input :link
+      = f.input :item_price
+      = f.input  :currency_name
+      = f.input  :catalogue_number
+      = f.input  :provider_name
+      = f.input  :number_of_items
+      = f.input  :packaging
+      = f.input  :remarks
+      -#- if params[:type] == "Chemical"
+      = f.input  :cid
+      = f.input  :formula_url
+      = f.input  :cas_number
+      = f.input  :purity
+      = f.button :submit, class: "btn btn-outline-success"
+-#
+-#f.select :type, [Item.name, SpecialItem.name]
 

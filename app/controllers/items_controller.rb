@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: %i[show edit update destroy]
-
+  before_action :set_item, only: %i[new create]
 
   def new
     @item = current_user.send(set_type.pluralize).new
-
+    @item_category = purchase_order.item_categories.new
   end
 
   def edit
@@ -14,8 +14,11 @@ class ItemsController < ApplicationController
   def create
     @item = current_user.send(set_type.pluralize).new(item_params)
     if @item.save
-      redirect_to @item, "#{params[:type]} Contact was successfully created."
+      @item_category = purchase_order.item_categories.new(purchase_order_id: @purchase_order.id )
+      @item_category.save
+      redirect_to @item, "#{params[:type]} was successfully created."
     else
+      flash.now.alert = I18n.t('shared.error_create')
       render :new
     end
   end
@@ -39,9 +42,12 @@ class ItemsController < ApplicationController
 
   private
 
+  def set_purchase_order
+    @purchase_order = PurchaseOrder.find(params[:id])
+  end
+
   def set_item
     @item = current_user.send(set_type.pluralize).find(params[:id])
-
   end
 
   def set_type
@@ -54,10 +60,9 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(set_type.to_sym).permit(:type, :item_name, :link, :item_price, :catalogue_number, :provider_name,
+    params.require(set_type.to_sym).permit(:type, :item_name, :link, :item_price, :catalogue_number, :provider_name, :currency_name,
                                            :number_of_items, :packaging, :remarks, :cid, :formula_url, :cas_number, :purity)
   end
-
 
 end
 

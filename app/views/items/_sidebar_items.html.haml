@@ -1,0 +1,19 @@
+.card.border-secondary.mb-3{:style => "max-width: 15rem;"}
+  .card-header Control Panel
+  .card-body
+    %table.table.table-condensed
+      %tr
+        %td
+        .row.pull-right
+          = link_to new_chemical_path(@item), { title: t('shared.edit') } do
+            %button.btn.btn-outline-success.btn_margin
+              = fa_icon "plus"
+          = link_to edit_chemical_path(@item), {title: "edit"} do
+            %button.btn.btn-outline-warning.btn_margin
+              = fa_icon "edit"
+          = link_to chemical_path(@item), { method: :delete, title: "delete"} do
+            %button.btn.btn-outline-danger.btn_margin
+              = fa_icon "trash"
+    .col-md-10.btn_margin
+      = link_to t('shared.new_purchase_order'), new_purchase_order_path(@purchase_order), class: 'btn btn-secondary'
+
