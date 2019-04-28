@@ -1,11 +1,10 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: %i[show edit update destroy]
-  before_action :set_item, only: %i[new create]
 
   def new
     @item = current_user.send(set_type.pluralize).new
-    @item_category = purchase_order.item_categories.new
+    @item_category = ItemCategory.new
   end
 
   def edit
@@ -13,14 +12,20 @@ class ItemsController < ApplicationController
 
   def create
     @item = current_user.send(set_type.pluralize).new(item_params)
-    if @item.save
-      @item_category = purchase_order.item_categories.new(purchase_order_id: @purchase_order.id )
-      @item_category.save
-      redirect_to @item, "#{params[:type]} was successfully created."
-    else
-      flash.now.alert = I18n.t('shared.error_create')
-      render :new
-    end
+    @purchase_order = PurchaseOrder.find(params[:id])
+    # @item_category = ItemCategory.new(purchase_order_id: 2)
+    # @item_category.save
+    @item.save
+    # binding.pry
+    # @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
+    # @item_category.save
+
+    redirect_to @item, "#{params[:type]} was successfully created."
+
+    # else
+    #   flash.now.alert = I18n.t('shared.error_create')
+    #   render :new
+    # end
   end
 
   def index
