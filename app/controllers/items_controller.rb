@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: %i[show edit update destroy]
+  before_action :set_purchase_order, only: %i[create]
 
   def new
     @item = current_user.send(set_type.pluralize).new
@@ -12,8 +13,9 @@ class ItemsController < ApplicationController
 
   def create
 
-    #@purchase_order = PurchaseOrder.find(params[:id])
-    @item_category = ItemCategory.new(purchase_order_id: 1)
+
+    @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
+    #@item_category = ItemCategory.new(purchase_order_id: 1)
     @item = current_user.send(set_type.pluralize).new(item_params)
     @item.item_category = @item_category
     @item.save
@@ -52,7 +54,8 @@ class ItemsController < ApplicationController
   private
 
   def set_purchase_order
-    @purchase_order = PurchaseOrder.find(params[:id])
+    @purchase_order = PurchaseOrder.find(params[:expendables][:po_id])
+    #@purchase_order = PurchaseOrder.find(24)
   end
 
   def set_item

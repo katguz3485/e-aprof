@@ -7,6 +7,7 @@
           %th= t(' vendor link')
           %th= t(' item price')
           %th= t(' catalogue number')
+          = link_to 'New Expandable', new_expendable_path(:po_id => @purchase_order.id),  class: 'btn btn-primary'
 
         %tbody
           %tr
@@ -16,6 +17,7 @@
                 %td= link_to purchase_order_item.link, purchase_order_item.link
                 %td= purchase_order_item.item_price
                 %td= purchase_order_item.catalogue_number
+
 
 
 
