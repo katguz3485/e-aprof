@@ -45,6 +45,7 @@ gem 'sprockets-rails', require: 'sprockets/railtie'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'faker'
+gem 'pry'
 gem 'pry-rails'
 gem 'redis', '~> 4.0'
 

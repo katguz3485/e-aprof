@@ -11,16 +11,20 @@ class ItemsController < ApplicationController
   end
 
   def create
+
+    #@purchase_order = PurchaseOrder.find(params[:id])
+    @item_category = ItemCategory.new(purchase_order_id: 1)
     @item = current_user.send(set_type.pluralize).new(item_params)
-    @purchase_order = PurchaseOrder.find(params[:id])
-    # @item_category = ItemCategory.new(purchase_order_id: 2)
-    # @item_category.save
+    @item.item_category = @item_category
     @item.save
-    # binding.pry
+
+    render :new
+
     # @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
     # @item_category.save
 
-    redirect_to @item, "#{params[:type]} was successfully created."
+    # redirect_to @item, "#{params[:type]} was successfully created."
+    #redirect_to @item, " was successfully created."
 
     # else
     #   flash.now.alert = I18n.t('shared.error_create')

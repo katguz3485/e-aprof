@@ -1,0 +1,25 @@
+
+[1mFrom:[0m /home/tomal/RubymineProjects/e-aprof/app/controllers/items_controller.rb @ line 20 ItemsController#create:
+
+    [1;34m13[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m14[0m:   @item = current_user.send(set_type.pluralize).new(item_params)
+    [1;34m15[0m:  [1;34m# @purchase_order = PurchaseOrder.find(params[:id])[0m
+    [1;34m16[0m:   [1;34m# @item_category = ItemCategory.new(purchase_order_id: 2)[0m
+    [1;34m17[0m:   [1;34m# @item_category.save[0m
+    [1;34m18[0m: 
+    [1;34m19[0m:   @item.save
+ => [1;34m20[0m:   binding.pry
+    [1;34m21[0m:   render [33m:new[0m
+    [1;34m22[0m:   [1;34m# binding.pry[0m
+    [1;34m23[0m:   [1;34m# @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)[0m
+    [1;34m24[0m:   [1;34m# @item_category.save[0m
+    [1;34m25[0m: 
+    [1;34m26[0m:  [1;34m# redirect_to @item, "#{params[:type]} was successfully created."[0m
+    [1;34m27[0m:   [1;34m#redirect_to @item, " was successfully created."[0m
+    [1;34m28[0m: 
+    [1;34m29[0m:   [1;34m# else[0m
+    [1;34m30[0m:   [1;34m#   flash.now.alert = I18n.t('shared.error_create')[0m
+    [1;34m31[0m:   [1;34m#   render :new[0m
+    [1;34m32[0m:   [1;34m# end[0m
+    [1;34m33[0m: [32mend[0m
+
