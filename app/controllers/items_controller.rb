@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: %i[show edit update destroy]
-  before_action :set_purchase_order, only: %i[create]
+  before_action :set_purchase_order, only: %i[create show]
 
   def new
     @item = current_user.send(set_type.pluralize).new
@@ -19,8 +19,9 @@ class ItemsController < ApplicationController
     @item = current_user.send(set_type.pluralize).new(item_params)
     @item.item_category = @item_category
     @item.save
-
-    render :new
+    redirect_to @purchase_order
+    binding.pry
+    # render :new
 
     # @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
     # @item_category.save
@@ -48,13 +49,13 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to @sitem, notice: "#{params[:type]} was successfully destroyed."
+    redirect_to @item, notice: "#{params[:type]} was successfully destroyed."
   end
 
   private
 
   def set_purchase_order
-    @purchase_order = PurchaseOrder.find(params[:expendables][:po_id])
+    @purchase_order = PurchaseOrder.find(params[:po])
     #@purchase_order = PurchaseOrder.find(24)
   end
 
