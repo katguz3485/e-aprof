@@ -16,6 +16,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  alias_method :facebook, :google
+
   def failure
     flash[:alert] = 'Authentication failed.'
     redirect_to root_path
