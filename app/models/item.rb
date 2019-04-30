@@ -17,12 +17,11 @@
 # t.index ["user_id"], name: "index_items_on_user_id"
 
 class Item < ApplicationRecord
+  scope :chemicals, -> { where(type: 'Chemical') }
+  scope :expendables, -> { where(type: 'Expendable') }
   has_many :comments, as: :commentable
   belongs_to :item_category
   belongs_to :user
-
-  scope :chemicals, -> { where(type: 'Chemical') }
-  scope :expendables, -> { where(type: 'Expendables') }
 
   validates :type, presence: true
   validates :item_name, presence: true

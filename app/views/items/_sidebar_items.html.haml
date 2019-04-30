@@ -1,0 +1,16 @@
+%table.table.table-condensed
+  %tr
+    %td
+    .row.pull-right
+      = link_to new_expendable_path, { title: t('shared.edit') } do
+        %button.btn.btn-outline-success.btn_margin
+          = fa_icon "plus"
+      = link_to edit_item_path, {title: "edit"} do
+        %button.btn.btn-outline-warning.btn_margin
+          = fa_icon "edit"
+      = link_to item_path, { method: :delete, title: "delete"} do
+        %button.btn.btn-outline-danger.btn_margin
+          = fa_icon "trash"
+  .col-md-10.btn_margin
+    = link_to t('shared.new_purchase_order'), new_purchase_order_path(@purchase_order), class: 'btn btn-secondary'
+

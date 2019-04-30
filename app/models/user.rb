@@ -10,6 +10,9 @@ class User < ApplicationRecord
   has_many :user_orders
   has_many :purchase_orders, through: :user_orders
   has_many :items
+  has_many :expendables, class_name: 'Expendable'
+  has_many :chemicals, class_name: 'Chemical'
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|

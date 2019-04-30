@@ -100,3 +100,16 @@
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
 }
+
+.simple_form {
+  float: none;
+  margin-bottom: 30px;
+
+}
+.simple_form .input-box {
+  margin-bottom: 20px;
+}
+.simple_form input {
+  margin-bottom: 5px;
+  display: inline-block;
+}

@@ -1,0 +1,18 @@
+.form-group
+  .col-md-12
+    = simple_form_for [@purchase_order, @item], html: { multipart: true} do |f|
+      = f.input  :type,  collection: %w[Expendable Chemical]
+      = f.input :item_name
+      = f.input :link
+      = f.input :item_price
+      = f.input  :currency_name
+      = f.input  :catalogue_number
+      = f.input  :provider_name
+      = f.input  :number_of_items
+      = f.input  :packaging
+      = f.input  :remarks
+      = f.input  :cid
+      = f.input  :formula_url
+      = f.input  :cas_number
+      = f.input  :purity
+      = f.button :submit, class: "btn btn-outline-success"
