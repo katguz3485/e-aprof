@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: %i[show edit update destroy]
   before_action :set_purchase_order, only: %i[create show]
+  before_action :set_item, only: %i[show edit update destroy]
+
 
   def new
     @item = current_user.send(set_type.pluralize).new
@@ -19,8 +20,7 @@ class ItemsController < ApplicationController
     @item = current_user.send(set_type.pluralize).new(item_params)
     @item.item_category = @item_category
     @item.save
-    redirect_to @purchase_order
-    binding.pry
+   redirect_to purchase_orders_path
     # render :new
 
     # @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
@@ -55,6 +55,7 @@ class ItemsController < ApplicationController
   private
 
   def set_purchase_order
+    #purchase_order = PurchaseOrder.find(params.fetch(:po))
     @purchase_order = PurchaseOrder.find(params[:po])
     #@purchase_order = PurchaseOrder.find(24)
   end
