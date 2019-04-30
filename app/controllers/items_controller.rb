@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_purchase_order, only: %i[create edit new]
+  before_action :set_purchase_order, only: %i[create edit new update]
   before_action :set_item, only: %i[show edit update destroy]
 
 
@@ -33,7 +33,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to @item, notice: I18n.t('shared.deleted', resource: "#{params[:type]}")
+      redirect_to purchase_order_path(@purchase_order.id)
     end
   end
 
