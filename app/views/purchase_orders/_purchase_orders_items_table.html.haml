@@ -7,8 +7,7 @@
           %th= t(' vendor link')
           %th= t(' item price')
           %th= t(' catalogue number')
-          = link_to 'New Expandable', new_expendable_path(:po => @purchase_order.id),  class: 'btn btn-primary'
-
+          = link_to 'New Expandable', new_purchase_order_expendable_path(@purchase_order.id),  class: 'btn btn-primary'
         %tbody
           %tr
             - @purchase_order.items.find_each do |purchase_order_item|

@@ -7,11 +7,12 @@ Rails.application.routes.draw do
 
   resources :purchase_orders do
     resources :comments
+    resources :chemicals, controller: 'items', type: 'Chemical'
+    resources :expendables, controller: 'items', type: 'Expendable'
   end
 
   resources :user_orders
 
-  resources :chemicals, controller: 'items', type: 'Chemical'
-  resources :expendables, controller: 'items', type: 'Expendable'
+
 
 end

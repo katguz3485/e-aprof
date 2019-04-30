@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_purchase_order, only: %i[create show]
+  before_action :set_purchase_order, only: %i[create edit new]
   before_action :set_item, only: %i[show edit update destroy]
 
 
@@ -12,34 +12,24 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def show
+    @items = @purchase_order.items
+  end
+
   def create
-
-
     @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
-    #@item_category = ItemCategory.new(purchase_order_id: 1)
     @item = current_user.send(set_type.pluralize).new(item_params)
     @item.item_category = @item_category
-    @item.save
-   redirect_to purchase_orders_path
-    # render :new
-
-    # @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
-    # @item_category.save
-
-    # redirect_to @item, "#{params[:type]} was successfully created."
-    #redirect_to @item, " was successfully created."
-
-    # else
-    #   flash.now.alert = I18n.t('shared.error_create')
-    #   render :new
-    # end
+    if @item.save
+      redirect_to purchase_order_path(@purchase_order.id)
+    else
+      render :new
+    end
   end
 
   def index
     @items = Item.all
-
   end
-
 
   def update
     if @item.update(item_params)
@@ -55,9 +45,7 @@ class ItemsController < ApplicationController
   private
 
   def set_purchase_order
-    #purchase_order = PurchaseOrder.find(params.fetch(:po))
-    @purchase_order = PurchaseOrder.find(params[:po])
-    #@purchase_order = PurchaseOrder.find(24)
+    @purchase_order = PurchaseOrder.find(params[:purchase_order_id])
   end
 
   def set_item
