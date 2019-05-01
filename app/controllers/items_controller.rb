@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @items = @purchase_order.items
+   # @items = @purchase_order.items
   end
 
   def create
