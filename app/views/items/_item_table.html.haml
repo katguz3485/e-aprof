@@ -1,0 +1,21 @@
+.row
+  .col-md-12
+    %table.table.table-condensed.center-content.margin_table
+      %thead
+        %tr
+          %th= t('item_name')
+          %td= @item.item_name
+        %tr
+          %th= t('item_link')
+          %td= @item.link
+        %tr
+          %th= t('item_type')
+          %td= @item.type
+        %tr
+          %th= t('item_price')
+          %td= @item.item_price
+        %tr
+          %th= t('item_provider')
+          %td= @item.provider_name
+        %tr
+
