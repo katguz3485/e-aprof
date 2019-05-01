@@ -35,8 +35,8 @@ gem 'html2haml'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'kaminari'
-gem 'omniauth-google-oauth2', '~> 0.5.1' # for Google Authentication
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2', '~> 0.5.1' # for Google Authentication
 gem 'pundit', '~> 2.0', '>= 2.0.1'
 gem 'simple_form', '~> 4.1'
 gem 'simplecov'
