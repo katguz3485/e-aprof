@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  before_action :set_purchase_order, only: %i[create edit new update]
+  before_action :set_purchase_order, only: %i[create edit new update destroy]
   before_action :set_item, only: %i[show edit update destroy]
 
 
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item.destroy
-    redirect_to @item, notice: "#{params[:type]} was successfully destroyed."
+    redirect_to purchase_order_path(@purchase_order.id)
   end
 
   private
