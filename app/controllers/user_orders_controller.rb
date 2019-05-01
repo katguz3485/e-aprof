@@ -9,10 +9,7 @@ class UserOrdersController < ApplicationController
     @user_orders = current_user.purchase_orders
   end
 
-  def show
-
-  end
-
+  def show; end
 
   private
 

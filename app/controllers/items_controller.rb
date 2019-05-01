@@ -1,19 +1,18 @@
-class ItemsController < ApplicationController
+# frozen_string_literal: true
 
+class ItemsController < ApplicationController
   before_action :set_purchase_order, only: %i[create edit new update destroy]
   before_action :set_item, only: %i[show edit update destroy]
-
 
   def new
     @item = current_user.send(set_type.pluralize).new
     @item_category = ItemCategory.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def show
-   # @items = @purchase_order.items
+    # @items = @purchase_order.items
   end
 
   def create
@@ -65,7 +64,4 @@ class ItemsController < ApplicationController
     params.require(set_type.to_sym).permit(:type, :item_name, :link, :item_price, :catalogue_number, :provider_name, :currency_name,
                                            :number_of_items, :packaging, :remarks, :cid, :formula_url, :cas_number, :purity)
   end
-
 end
-
-
