@@ -6,7 +6,7 @@ class PurchaseOrder < ApplicationRecord
   has_many :user_orders, dependent: :destroy
   has_many :users, through: :user_orders
 
-  has_many :item_categories
+  has_many :item_categories, dependent: :destroy
   has_many :items, through: :item_categories
   has_many :expendables, class_name: 'Expendable'
   has_many :chemicals, class_name: 'Chemical'
