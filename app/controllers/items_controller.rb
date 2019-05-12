@@ -11,8 +11,7 @@ class ItemsController < ApplicationController
     @item_category = ItemCategory.new
   end
 
-  def edit;
-  end
+  def edit; end
 
   def show
   end
@@ -39,7 +38,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = current_user.items.find(params[:id])
     @item.destroy
     redirect_to purchase_order_path(@purchase_order.id)
   end
@@ -54,13 +52,6 @@ class ItemsController < ApplicationController
   def set_item
     @item = current_user.items.find(params[:id])
   end
-
-
-  # def set_type
-  #   'chemical' if params[:type] = 'Chemical'
-  #   'expendable' if params[:type] = 'Expendable'
-  # end
-
 
   def set_type
     case params[:type]
