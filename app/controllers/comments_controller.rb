@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
   def create
     @comment = @commentable.comments.new(comment_params.merge(user: current_user))
     @comment.save
+
     redirect_to @commentable, notice: I18n.t('shared.created', resource: 'Comment')
   end
 
