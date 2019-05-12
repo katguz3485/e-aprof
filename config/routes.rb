@@ -11,5 +11,11 @@ Rails.application.routes.draw do
     resources :expendables, controller: 'items', type: 'Expendable'
   end
 
+
+  resources :expendables, controller: 'items', type: 'Expendable' do
+    resources :comments
+  end
+
+
   resources :user_orders
 end
