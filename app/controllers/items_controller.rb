@@ -1,18 +1,21 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
-  before_action :set_purchase_order, only: %i[create edit new update destroy]
+  before_action :set_type, only: %i[show edit update destroy]
+  before_action :set_purchase_order, only: %i[create show edit new update destroy]
   before_action :set_item, only: %i[show edit update destroy]
+
 
   def new
     @item = current_user.send(set_type.pluralize).new
     @item_category = ItemCategory.new
   end
 
-  def edit; end
+  def edit;
+  end
 
   def show
-    # @items = @purchase_order.items
+    @items = @purchase_order.items
   end
 
   def create
@@ -37,6 +40,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
+    @item = current_user.items.find(params[:id])
     @item.destroy
     redirect_to purchase_order_path(@purchase_order.id)
   end
@@ -47,18 +51,29 @@ class ItemsController < ApplicationController
     @purchase_order = PurchaseOrder.find(params[:purchase_order_id])
   end
 
-  def set_item
-    @item = current_user.send(set_type.pluralize).find(params[:id])
+  def set_type
+    'chemical' if params[:type] = 'Chemical'
+    'expendable' if params[:type] = 'Expendable'
   end
 
-  def set_type
-    case params[:type]
-    when 'Chemical'
-      'chemical'
-    when 'Expendable'
-      'expendable'
-    end
+  def set_item
+    @item = current_user.items.find(params[:id])
+    # @item = current_user.send(set_type.pluralize).find(params[:id])
+
   end
+
+
+
+
+  # def set_type
+  #   case params[:type]
+  #
+  #   when 'Chemical'
+  #     'chemical'
+  #   when 'Expendable'
+  #     'expendable'
+  #   end
+  # end
 
   def item_params
     params.require(set_type.to_sym).permit(:type, :item_name, :link, :item_price, :catalogue_number, :provider_name, :currency_name,
