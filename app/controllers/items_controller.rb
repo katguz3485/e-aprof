@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class ItemsController < ApplicationController
+  before_action :set_type, only: %i[show edit update destroy]
   before_action :set_purchase_order, only: %i[create edit new update destroy]
   before_action :set_item, only: %i[show edit update destroy]
+
 
   def new
     @item = current_user.send(set_type.pluralize).new
@@ -12,7 +14,6 @@ class ItemsController < ApplicationController
   def edit; end
 
   def show
-    # @items = @purchase_order.items
   end
 
   def create
@@ -47,12 +48,14 @@ class ItemsController < ApplicationController
     @purchase_order = PurchaseOrder.find(params[:purchase_order_id])
   end
 
+
   def set_item
-    @item = current_user.send(set_type.pluralize).find(params[:id])
+    @item = current_user.items.find(params[:id])
   end
 
   def set_type
     case params[:type]
+
     when 'Chemical'
       'chemical'
     when 'Expendable'

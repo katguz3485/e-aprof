@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :chemicals, controller: 'items', type: 'Chemical' do
+    resources :comments
+  end
 
   resources :user_orders
 end

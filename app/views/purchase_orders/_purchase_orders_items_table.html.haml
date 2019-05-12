@@ -9,6 +9,8 @@
           %th= t(' catalogue number')
           %th= t('shared.actions')
           = link_to 'New Expandable', new_purchase_order_expendable_path(@purchase_order.id),  class: 'btn btn-primary'
+          = link_to 'New Chemical', new_purchase_order_chemical_path(@purchase_order.id),  class: 'btn btn-primary'
+
         %tbody
           %tr
             - @purchase_order.items.find_each do |purchase_order_item|
