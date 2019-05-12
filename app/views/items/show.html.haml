@@ -1,5 +1,5 @@
 %h3 Item Data
 = render 'item_table'
 
--#= render partial: 'comments/shared/comments', locals: { commentable: @item}
--#= render partial: 'comments/shared/form', locals: { commentable: @item}
+= render partial: 'comments/shared/comments', locals: { commentable: @item}
+= render partial: 'comments/shared/form', locals: { commentable: @item}
