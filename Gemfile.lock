@@ -1,3 +1,14 @@
+GIT
+  remote: https://github.com/randym/axlsx.git
+  revision: c8ac844572b25fda358cc01d2104720c4c42f450
+  ref: c8ac844
+  specs:
+    axlsx (2.1.0.pre)
+      htmlentities (~> 4.3.4)
+      mimemagic (~> 0.3)
+      nokogiri (>= 1.6.6)
+      rubyzip (>= 1.2.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -46,6 +57,9 @@ GEM
     ast (2.4.0)
     autoprefixer-rails (9.5.1)
       execjs
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     bcrypt (3.1.12)
     better_errors (2.5.1)
       coderay (>= 1.0.0)
@@ -116,6 +130,7 @@ GEM
       haml (>= 4.0, < 6)
       nokogiri (>= 1.6.0)
       ruby_parser (~> 3.5)
+    htmlentities (4.3.4)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.2)
@@ -261,6 +276,7 @@ GEM
     ruby_dep (1.5.0)
     ruby_parser (3.13.1)
       sexp_processor (~> 4.9)
+    rubyzip (1.2.2)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -331,6 +347,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  axlsx!
+  axlsx_rails
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
@@ -359,8 +377,10 @@ DEPENDENCIES
   pundit (~> 2.0, >= 2.0.1)
   rails (~> 5.2.2)
   redis (~> 4.0)
+  responders
   rspec-rails
   rubocop (~> 0.64.0)
+  rubyzip (>= 1.2.1)
   sass-rails (~> 5.0)
   shoulda-matchers
   simple_form (~> 4.1)

@@ -25,9 +25,24 @@ class PurchaseOrdersController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @purchase_order.items
+    respond_to do |format|
+      format.xlsx {
+        response.headers[
+            'Content-Disposition'
+        ] = "attachment; filename='items.xlsx'"
+      }
+      format.html {render :show}
+    end
 
-  def edit; end
+    #excell_service = ExcellService.new(@purchase_order.items)
+    #excell_service.generate_file
+
+  end
+
+  def edit;
+  end
 
   def update
     if @purchase_order.update(purchase_order_params)
