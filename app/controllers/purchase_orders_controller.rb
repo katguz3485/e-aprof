@@ -26,21 +26,6 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def show
-=begin
-    @purchase_order.items
-    respond_to do |format|
-      format.xlsx {
-        response.headers[
-            'Content-Disposition'
-        ] = "attachment; filename='items.xlsx'"
-      }
-      format.html {render :show}
-    end
-=end
-
-#     ExcellService.new(@purchase_order.items)
-    #excell_service.generate_file
-
   end
 
   def edit;
