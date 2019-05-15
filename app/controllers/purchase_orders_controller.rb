@@ -26,6 +26,7 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def show
+=begin
     @purchase_order.items
     respond_to do |format|
       format.xlsx {
@@ -35,8 +36,9 @@ class PurchaseOrdersController < ApplicationController
       }
       format.html {render :show}
     end
+=end
 
-    #excell_service = ExcellService.new(@purchase_order.items)
+#     ExcellService.new(@purchase_order.items)
     #excell_service.generate_file
 
   end
