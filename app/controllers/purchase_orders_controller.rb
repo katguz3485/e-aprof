@@ -6,6 +6,13 @@ class PurchaseOrdersController < ApplicationController
 
   def index
     @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(30)
+  #  @chemical_purchase_orders = PurchaseOrder.chemicals
+
+    @expendable_purchase_orders = PurchaseOrder.expendables
+  end
+
+  def chemical_index
+    @chemical_purchase_orders = PurchaseOrder.chemicals
   end
 
   def new
