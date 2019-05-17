@@ -51,7 +51,7 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def purchase_order_params
-    params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date)
+    params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date, :purchase_order_type)
   end
 end
 
