@@ -1,0 +1,7 @@
+%a.list-group-item.list-group-item-action.margin_list
+  %h4 List of Orders
+  %a.list-group-item.list-group-item-action
+
+    -#= render partial: 'comments/shared/form', locals: { commentable: @item}
+
+    =render partial: 'purchase_orders_table', locals: { purchase_orders: @expendable_purchase_orders }
