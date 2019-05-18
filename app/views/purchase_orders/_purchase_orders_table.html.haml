@@ -9,7 +9,7 @@
 
         %tbody
           %tr
-            - @purchase_orders.find_each do |purchase_order|
+            - purchase_orders.find_each do |purchase_order|
               %tr
                 %td= link_to purchase_order.name, purchase_order_path(purchase_order.id)
                 %td= purchase_order.planned_order_date

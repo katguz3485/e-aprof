@@ -1,4 +1,4 @@
 %a.list-group-item.list-group-item-action.margin_list
   %h4 List of Orders
   %a.list-group-item.list-group-item-action
-    =render 'purchase_orders_table'
+    =render partial: 'purchase_orders_table', locals: { purchase_orders: @purchase_orders }

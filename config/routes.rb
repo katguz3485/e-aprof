@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  get 'chemical_orders', to: 'purchase_orders#chemical_index'
+  get 'expendables_orders', to: 'purchase_orders#expendable_index'
+
+
   resources :purchase_orders do
     resources :comments
     resources :chemicals, controller: 'items', type: 'Chemical'

@@ -28,7 +28,7 @@ User.all.each do
   2.times do
     PurchaseOrder.create!(name: purchase_order_names.sample,
                           planned_order_date: Faker::Date.forward(200),
-                          grant_id: grant_ids.sample)
+                          grant_id: grant_ids.sample, purchase_order_type: "Chemical")
     UserOrder.create!(user_id: User.all.pluck(:id).sample,
                       purchase_order_id: PurchaseOrder.pluck(:id).sample)
 

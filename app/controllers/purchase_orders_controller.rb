@@ -8,6 +8,14 @@ class PurchaseOrdersController < ApplicationController
     @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(30)
   end
 
+  def chemical_index
+    @chemical_purchase_orders = PurchaseOrder.chemicals
+  end
+
+  def expendable_index
+    @expendable_purchase_orders = PurchaseOrder.expendables
+  end
+
   def new
     @purchase_order = PurchaseOrder.new
     @user_order = current_user.user_orders.new
@@ -51,7 +59,7 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def purchase_order_params
-    params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date)
+    params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date, :purchase_order_type)
   end
 end
 

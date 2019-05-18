@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class PurchaseOrder < ApplicationRecord
+
+  scope :chemicals, -> {where(purchase_order_type: 'Chemical')}
+  scope :expendables, -> {where(purchase_order_type: 'Expendable')}
+
   has_many :comments, as: :commentable
 
   has_many :user_orders, dependent: :destroy

@@ -26,13 +26,13 @@
           %p.card-text Generate File summarizing your order
 
     .card.border-light.mb-3.margin_card_deck{:style => "max-width: 15rem;"}
-      = link_to root_path do
+      = link_to chemical_orders_path do
         %img.card-img-top{:alt => "Chemicals", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/chemical_3.png"}
           %h5.card-title  Upcoming Chemical Orders
           %p.card-text See and edit current order
 
     .card.border-light.mb-3.margin_card_deck{:style => "max-width: 15rem;"}
-      = link_to root_path do
+      = link_to expendables_orders_path do
         %img.card-img-top{:alt => "Generate File", :src => "https://s3.us-east-2.amazonaws.com/alpaca-app/eadiunkt/expendable_1.png"}
           %h5.card-title  Upcoming Expendable Orders
           %p.card-text See and edit current order
