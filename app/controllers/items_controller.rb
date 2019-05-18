@@ -51,14 +51,14 @@ class ItemsController < ApplicationController
 
 
   def set_item
-    if check_is_user_order
+    if check_order_ownership
       @item = current_user.items.find(params[:id])
     else
       redirect_to purchase_order_path(@purchase_order.id), notice: I18n.t('shared.restricted')
     end
   end
 
-  def check_is_user_order
+  def check_order_ownership
     current_user.purchase_orders.include?(@purchase_order)
   end
 
