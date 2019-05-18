@@ -3,7 +3,7 @@
 class ItemsController < ApplicationController
   before_action :set_type, only: %i[show edit update destroy]
   before_action :set_purchase_order, only: %i[create edit new update destroy]
-  before_action :set_item, only: %i[show]
+  before_action :set_item, only: %i[show edit destroy update]
 
 
   def new
@@ -11,15 +11,10 @@ class ItemsController < ApplicationController
     @item_category = ItemCategory.new
   end
 
-  def edit
-    if check_is_user_order
-      set_item
-    else
-      redirect_to purchase_order_path(@purchase_order.id), notice: I18n.t('shared.restricted')
-    end
+  def edit;
   end
 
-  def show
+  def show;
   end
 
   def create
@@ -44,14 +39,8 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if check_is_user_order
-      set_item
-      @item.destroy
-      redirect_to purchase_order_path(@purchase_order.id)
-    else
-      redirect_to purchase_order_path(@purchase_order.id), notice: I18n.t('shared.restricted')
-    end
-
+    @item.destroy
+    redirect_to purchase_order_path(@purchase_order.id)
   end
 
   private
@@ -62,7 +51,11 @@ class ItemsController < ApplicationController
 
 
   def set_item
-    @item = current_user.items.find(params[:id])
+    if check_is_user_order
+      @item = current_user.items.find(params[:id])
+    else
+      redirect_to purchase_order_path(@purchase_order.id), notice: I18n.t('shared.restricted')
+    end
   end
 
   def check_is_user_order
