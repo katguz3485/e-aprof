@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   get 'chemical_orders', to: 'purchase_orders#chemical_index'
   get 'expendables_orders', to: 'purchase_orders#expendable_index'
+  get 'search_index', to: 'purchase_orders#search_index'
 
 
   resources :purchase_orders do

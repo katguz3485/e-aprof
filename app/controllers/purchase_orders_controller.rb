@@ -8,6 +8,33 @@ class PurchaseOrdersController < ApplicationController
     @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(30)
   end
 
+  def search_index
+    @filterrific = initialize_filterrific(
+        PurchaseOrder,
+        params[:filterrific],
+        select_options: {
+           # with_sport_id: Sport.options_for_select,
+        },
+        persistence_id: "shared_key",
+        default_filter_params: {},
+        available_filters: [:search_name],
+        sanitize_params: true,
+        ) || return
+    @purchase_orders = @filterrific.find.page params[:page]
+   # @purchase_orders = @purchase_orders.order('started_at ASC')
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+  rescue ActiveRecord::RecordNotFound => e
+    puts "Had to reset filterrific params: #{e.message}"
+    redirect_to(reset_filterrific_url(format: :html)) && return
+    authorize @events
+
+  end
+
   def chemical_index
     @chemical_purchase_orders = PurchaseOrder.chemicals
   end
