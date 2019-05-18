@@ -27,6 +27,6 @@
 /config/master.key
 
 /coverage
-
+/vendor
 .idea/
 .idea
