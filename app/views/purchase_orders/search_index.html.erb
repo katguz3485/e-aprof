@@ -8,7 +8,14 @@
             class: 'filterrific-periodically-observed'
         ) %>
   </div>
-
+  <div class="search">
+    Grant
+    <%= f.select(
+            :with_sport_id,
+            @filterrific.select_options[:with_sport_id],
+            {include_blank: 'Any '}
+        ) %>
+  </div>
 
   <div class="search">
     <%= link_to(
@@ -18,8 +25,8 @@
   </div>
 
 
-<%= render(
-        partial: 'purchase_orders/purchase_orders_table_print',
-        locals: { purchase_orders: @purchase_orders }
-    ) %>
+  <%= render(
+          partial: 'purchase_orders/purchase_orders_table_print',
+          locals: {purchase_orders: @purchase_orders}
+      ) %>
 <% end %>
