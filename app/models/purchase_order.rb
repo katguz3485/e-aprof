@@ -5,6 +5,18 @@ class PurchaseOrder < ApplicationRecord
   scope :chemicals, -> {where(purchase_order_type: 'Chemical')}
   scope :expendables, -> {where(purchase_order_type: 'Expendable')}
 
+  scope :search_name, ->(query) {terms = query.downcase.split(/\s+/).join
+  where("LOWER(name) LIKE ?", "%#{terms}%")
+  }
+
+  filterrific(
+      default_filter_params: {},
+      available_filters: [
+          :search_name,
+      ]
+  )
+
+
   has_many :comments, as: :commentable
 
   has_many :user_orders, dependent: :destroy
