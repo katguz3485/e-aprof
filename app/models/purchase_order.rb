@@ -9,10 +9,19 @@ class PurchaseOrder < ApplicationRecord
   where("LOWER(name) LIKE ?", "%#{terms}%")
   }
 
+  scope :search_grant, ->(query) {terms = query.downcase.split(/\s+/).join
+  where("LOWER(grant.grant_name) LIKE ?", "%#{terms}%")
+  }
+
+  scope :search_grant, ->(grant_ids) {
+    where(grant: [*grant_ids])
+  }
+
   filterrific(
       default_filter_params: {},
       available_filters: [
           :search_name,
+          :search_grant
       ]
   )
 

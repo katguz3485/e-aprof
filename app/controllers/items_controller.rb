@@ -2,8 +2,9 @@
 
 class ItemsController < ApplicationController
   before_action :set_type, only: %i[show edit update destroy]
-  before_action :set_purchase_order, only: %i[create edit new update destroy]
-  before_action :set_item, only: %i[show edit destroy update]
+  before_action :set_purchase_order, only: %i[show create edit new update destroy]
+  before_action :set_item, only: %i[edit destroy update]
+  before_action :set_item_without_ownership, only: %i[show]
 
 
   def new
@@ -49,6 +50,9 @@ class ItemsController < ApplicationController
     @purchase_order = PurchaseOrder.find(params[:purchase_order_id])
   end
 
+  def set_item_without_ownership
+    @item = @purchase_order.items.find(params[:id])
+  end
 
   def set_item
     if check_order_ownership

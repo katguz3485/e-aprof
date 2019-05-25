@@ -13,15 +13,16 @@ class PurchaseOrdersController < ApplicationController
         PurchaseOrder,
         params[:filterrific],
         select_options: {
-           # with_sport_id: Sport.options_for_select,
+            # with_sport_id: Sport.options_for_select,
+            search_grant: Grant.options_for_select
         },
         persistence_id: "shared_key",
         default_filter_params: {},
-        available_filters: [:search_name],
+        available_filters: [:search_name, :search_grant],
         sanitize_params: true,
-        ) || return
+    ) || return
     @purchase_orders = @filterrific.find.page params[:page]
-   # @purchase_orders = @purchase_orders.order('started_at ASC')
+    # @purchase_orders = @purchase_orders.order('started_at ASC')
 
     respond_to do |format|
       format.html
