@@ -1,0 +1,20 @@
+.row
+  .col-md-12
+    %table.table.table-condensed.center-content.margin_table
+      %thead
+        %tr
+          %th= t('name')
+          %th= t('deadline')
+          %th= t('grant')
+
+        %tbody
+          %tr
+            - purchase_orders.find_each do |purchase_order|
+              %tr
+                %td= link_to purchase_order.name, purchase_order_path(purchase_order.id,format: :xlsx)
+                %td= purchase_order.planned_order_date
+                %td= purchase_order.grant.grant_name
+
+
+
+
