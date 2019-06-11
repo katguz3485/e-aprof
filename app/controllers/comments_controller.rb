@@ -2,23 +2,27 @@
 
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_comment, only: %i[destroy]
-  before_action :load_commentable, only: %i[index new create]
+  before_action :comment, only: %i[destroy]
+  before_action :commentable, only: %i[new create]
 
   def create
-    @comment = @commentable.comments.new(comment_params.merge(user: current_user))
-    @comment.save
-    redirect_to request.referrer, notice: I18n.t('shared.created', resource: 'Comment')
+    comment = commentable.comments.new(comment_params.merge(user: current_user))
+    if comment.save
+      redirect_to request.referrer, notice: I18n.t('shared.created', resource: 'Comment')
+    else
+      flash.now.alert = I18n.t('shared.error_create')
+      render :new
+    end
   end
 
   def show
-    @comments = @commentable.comments
+    commentable.comments
   end
 
   def destroy
-    @commentable = load_commentable
-    if @comment.attributes.has_value?(current_user.id)
-      @comment.destroy
+    commentable
+    if comment.attributes.has_value?(current_user.id)
+      comment.destroy
       redirect_to request.referrer, notice: I18n.t('shared.deleted', resource: 'Comment')
     else
       redirect_to request.referrer, notice: I18n.t('shared.restricted')
@@ -27,16 +31,17 @@ class CommentsController < ApplicationController
 
   private
 
+  def comment
+    @comment = Comments::CommentsQuery.find_comment(params[:id])
+  end
+
+  def commentable
+    @commentable = Comments::CommentsQuery.find_commentable(request)
+
+  end
+
   def comment_params
     params.require(:comment).permit(:title, :description)
   end
 
-  def load_commentable
-    resource, id = request.path.split('/')[1, 2]
-    @commentable = resource.singularize.classify.constantize.find(id)
-  end
-
-  def set_comment
-    @comment ||= Comment.find(params[:id])
-  end
 end
