@@ -5,8 +5,7 @@ class PurchaseOrdersController < ApplicationController
   before_action :requires_same_user, only: %i[update destroy]
 
   def index
-    # @purchase_orders = PurchaseOrders::PurchaseOrderQuery.upcoming_orders(params: params[:page])
-    @purchase_orders = PurchaseOrder.all
+  @purchase_orders = PurchaseOrders::PurchaseOrderQuery.upcoming_orders(params: params[:page])
   end
 
   def search_index
