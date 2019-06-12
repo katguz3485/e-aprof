@@ -6,17 +6,14 @@ class ItemsController < ApplicationController
   before_action :set_item, only: %i[edit destroy update]
   before_action :set_item_without_ownership, only: %i[show]
 
-
   def new
     @item = current_user.send(set_type.pluralize).new
     @item_category = ItemCategory.new
   end
 
-  def edit;
-  end
+  def edit; end
 
-  def show;
-  end
+  def show; end
 
   def create
     @item_category = ItemCategory.new(purchase_order_id: @purchase_order.id)
