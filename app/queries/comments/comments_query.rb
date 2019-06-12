@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Comments
   class CommentsQuery
-
     def self.find_comment(id, relation: Comment)
       relation.find(id) unless id.nil?
     end

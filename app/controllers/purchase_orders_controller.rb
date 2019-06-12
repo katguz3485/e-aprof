@@ -5,21 +5,22 @@ class PurchaseOrdersController < ApplicationController
   before_action :requires_same_user, only: %i[update destroy]
 
   def index
-    @purchase_orders = PurchaseOrder.where('planned_order_date >= ?', Date.today).page(params[:page]).per(30)
+    # @purchase_orders = PurchaseOrders::PurchaseOrderQuery.upcoming_orders(params: params[:page])
+    @purchase_orders = PurchaseOrder.all
   end
 
   def search_index
     @filterrific = initialize_filterrific(
-        PurchaseOrder,
-        params[:filterrific],
-        select_options: {
-            # with_sport_id: Sport.options_for_select,
-            search_grant: Grant.options_for_select
-        },
-        persistence_id: "shared_key",
-        default_filter_params: {},
-        available_filters: [:search_name, :search_grant],
-        sanitize_params: true,
+      PurchaseOrder,
+      params[:filterrific],
+      select_options: {
+        # with_sport_id: Sport.options_for_select,
+        search_grant: Grant.options_for_select
+      },
+      persistence_id: 'shared_key',
+      default_filter_params: {},
+      available_filters: [:search_name, :search_grant],
+      sanitize_params: true,
     ) || return
     @purchase_orders = @filterrific.find.page params[:page]
     # @purchase_orders = @purchase_orders.order('started_at ASC')
@@ -28,12 +29,10 @@ class PurchaseOrdersController < ApplicationController
       format.html
       format.js
     end
-
   rescue ActiveRecord::RecordNotFound => e
     puts "Had to reset filterrific params: #{e.message}"
     redirect_to(reset_filterrific_url(format: :html)) && return
     authorize @events
-
   end
 
   def chemical_index
@@ -50,10 +49,9 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def create
-    @purchase_order = PurchaseOrder.new(purchase_order_params)
-    if @purchase_order.save
-      @user_order = current_user.user_orders.new(purchase_order_id: @purchase_order.id)
-      @user_order.save
+    @purchase_order = PurchaseOrders::CreateService.new(purchase_order_params).call
+    if @purchase_order.persisted?
+      @user_order = UserOrders::CreateService.new(user_order_params).call
       redirect_to user_orders_path, notice: I18n.t('shared.created', resource: 'Purchase Order')
     else
       flash.now.alert = I18n.t('shared.error_create')
@@ -61,11 +59,9 @@ class PurchaseOrdersController < ApplicationController
     end
   end
 
-  def show
-  end
+  def shows; end
 
-  def edit;
-  end
+  def edit; end
 
   def update
     if @purchase_order.update(purchase_order_params)
@@ -87,13 +83,23 @@ class PurchaseOrdersController < ApplicationController
   end
 
   def purchase_order_params
-    params.require(:purchase_order).permit(:id, :name, :grant_id, :planned_order_date, :purchase_order_type)
+    params.require(:purchase_order).permit(
+      :id,
+      :name,
+      :grant_id,
+      :planned_order_date,
+      :purchase_order_type,
+    )
   end
-end
 
-def requires_same_user
-  if @purchase_order.user_orders.where(user_id: current_user.id) == current_user.id
-    flash[:danger] = 'Access denied'
-    redirect_to purchase_order_path
+  def user_order_params
+    { user: current_user, purchase_order: @purchase_order }
+  end
+
+  def requires_same_user
+    if @purchase_order.user_orders.where(user_id: current_user.id) == current_user.id
+      flash[:danger] = 'Access denied'
+      redirect_to purchase_order_path
+    end
   end
 end

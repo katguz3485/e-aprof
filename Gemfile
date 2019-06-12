@@ -42,17 +42,17 @@ gem 'simple_form', '~> 4.1'
 gem 'simplecov'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 # Use Redis adapter to run Action Cable in production
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 gem 'faker'
+gem 'filterrific'
 gem 'pry'
 gem 'pry-rails'
 gem 'redis', '~> 4.0'
-gem 'rubyzip', '>= 1.2.1'
-gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
-gem 'axlsx_rails'
 gem 'responders'
-gem 'filterrific'
+gem 'rubyzip', '>= 1.2.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

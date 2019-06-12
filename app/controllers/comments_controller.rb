@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
   def create
     comment = commentable.comments.new(comment_params.merge(user: current_user))
     if comment.save
-      redirect_to request.referrer, notice: I18n.t('shared.created', resource: 'Comment')
+      redirect_to request.referer, notice: I18n.t('shared.created', resource: 'Comment')
     else
       flash.now.alert = I18n.t('shared.error_create')
       render :new
@@ -23,9 +23,9 @@ class CommentsController < ApplicationController
     commentable
     if comment.attributes.has_value?(current_user.id)
       comment.destroy
-      redirect_to request.referrer, notice: I18n.t('shared.deleted', resource: 'Comment')
+      redirect_to request.referer, notice: I18n.t('shared.deleted', resource: 'Comment')
     else
-      redirect_to request.referrer, notice: I18n.t('shared.restricted')
+      redirect_to request.referer, notice: I18n.t('shared.restricted')
     end
   end
 
@@ -37,11 +37,9 @@ class CommentsController < ApplicationController
 
   def commentable
     @commentable = Comments::CommentsQuery.find_commentable(request)
-
   end
 
   def comment_params
     params.require(:comment).permit(:title, :description)
   end
-
 end
