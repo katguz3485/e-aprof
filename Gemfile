@@ -38,7 +38,7 @@ gem 'kaminari'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2', '~> 0.5.1' # for Google Authentication
 gem 'pundit', '~> 2.0', '>= 2.0.1'
-gem 'simple_form', '~> 4.1'
+gem 'simple_form', '~> 5.0'
 gem 'simplecov'
 gem 'sprockets-rails', require: 'sprockets/railtie'
 # Use Redis adapter to run Action Cable in production
